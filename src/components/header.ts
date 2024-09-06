@@ -5,7 +5,7 @@ import { resolveRouterPath } from '../router';
 import '@shoelace-style/shoelace/dist/components/button/button.js';
 @customElement('app-header')
 export class AppHeader extends LitElement {
-  @property({ type: String }) title = 'themount-services';
+  @property({ type: String }) title = '';
 
   @property({ type: Boolean }) enableBack: boolean = false;
 
@@ -14,7 +14,7 @@ export class AppHeader extends LitElement {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: var(--app-color-primary);
+      background: var(--app-color-primary, black);
       color: white;
       padding: 12px;
       padding-top: 4px;
@@ -22,8 +22,8 @@ export class AppHeader extends LitElement {
       position: fixed;
       left: env(titlebar-area-x, 0);
       top: env(titlebar-area-y, 0);
-      height: env(titlebar-area-height, 30px);
-      width: env(titlebar-area-width, 100%);
+      height: env(titlebar-area-height, 60px);
+      width: env(titlebar-area-width, calc(100% - 36px));
       -webkit-app-region: drag;
     }
 
@@ -45,9 +45,22 @@ export class AppHeader extends LitElement {
       gap: 8px;
     }
 
+    #logo-block {
+      width: 99px;
+      height: 56px;
+      background-image: url('/assets/images/the-mount-logo-dark.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
     @media (prefers-color-scheme: light) {
       header {
         color: black;
+        background: var(--app-color-primary, white);
+      }
+
+      #logo-block {
+        background-image: url('/assets/images/the-mount-logo-light.png');
       }
 
       nav a {
@@ -59,7 +72,7 @@ export class AppHeader extends LitElement {
   render() {
     return html`
       <header>
-        <div><img src="/assets/images/the-mount-logo.png" /></div>
+        <div id="logo-block">&nbsp;</div>
         <div id="back-button-block">
           ${this.enableBack
             ? html`<sl-button size="small" href="${resolveRouterPath()}">

@@ -13,4 +13,5 @@ export const cmsApi = async (path: string) => {
 };
 
 export const getServices = () => cmsApi('services');
+export const getService = (id: string) => cmsApi(`services/${id}?populate=*`);
 

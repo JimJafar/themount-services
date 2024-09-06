@@ -33,3 +33,10 @@ With it you get an app that:
 - Uses the [Azure Static Web Apps CLI](https://azure.github.io/static-web-apps-cli) which enables emulating your production environment locally, and gets you ready for deploying to Azure Static Web Apps!
 
 and all with just a few button clicks 😊.
+
+## Technology Used
+
+- [TypeScript](https://www.typescriptlang.org/)
+- [lit](https://lit.dev/)
+- [Shoelace](https://shoelace.style/)
+- [App Tools Router](https://github.com/thepassle/app-tools/blob/master/router/README.md)

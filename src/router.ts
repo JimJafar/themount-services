@@ -3,7 +3,7 @@
 import { html } from 'lit';
 
 if (!(globalThis as any).URLPattern) {
-  await import("urlpattern-polyfill");
+  await import('urlpattern-polyfill');
 }
 
 import { Router } from '@thepassle/app-tools/router.js';
@@ -17,32 +17,32 @@ import './pages/app-home.js';
 const baseURL: string = (import.meta as any).env.BASE_URL;
 
 export const router = new Router({
-    routes: [
-      {
-        path: resolveRouterPath(),
-        title: 'Home',
-        render: () => html`<app-home></app-home>`
-      },
-      {
-        path: resolveRouterPath('about'),
-        title: 'About',
-        plugins: [
-          lazy(() => import('./pages/app-about/app-about.js')),
-        ],
-        render: () => html`<app-about></app-about>`
-      }
-    ]
-  });
+  routes: [
+    {
+      path: resolveRouterPath(),
+      title: 'Home',
+      render: () => html`<app-home></app-home>`,
+    },
+    {
+      path: resolveRouterPath('service/:id'),
+      title: 'Service',
+      plugins: [lazy(() => import('./pages/app-service/app-service.js'))],
+      render: ({ params }) =>
+        html`<app-service id="${params.id}"></app-service>`,
+    },
+  ],
+});
 
-  // This function will resolve a path with whatever Base URL was passed to the vite build process.
-  // Use of this function throughout the starter is not required, but highly recommended, especially if you plan to use GitHub Pages to deploy.
-  // If no arg is passed to this function, it will return the base URL.
+// This function will resolve a path with whatever Base URL was passed to the vite build process.
+// Use of this function throughout the starter is not required, but highly recommended, especially if you plan to use GitHub Pages to deploy.
+// If no arg is passed to this function, it will return the base URL.
 
-  export function resolveRouterPath(unresolvedPath?: string) {
-    var resolvedPath = baseURL;
-    if(unresolvedPath) {
-      resolvedPath = resolvedPath + unresolvedPath;
-    }
-
-    return resolvedPath;
+export function resolveRouterPath(unresolvedPath?: string) {
+  var resolvedPath = baseURL;
+  if (unresolvedPath) {
+    resolvedPath = resolvedPath + unresolvedPath;
   }
+
+  return resolvedPath;
+}
+
