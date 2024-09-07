@@ -22,6 +22,26 @@ export class AppService extends LitElement {
   async firstUpdated() {
     // this method is a lifecycle even in lit
     // for more info check out the lit docs https://lit.dev/docs/components/lifecycle/
+    const container = this.shadowRoot?.getElementById('worship-songs');
+
+    // Close all other details when one is shown
+    container?.addEventListener('sl-show', (event) => {
+      if ((event.target as Element)?.localName === 'sl-details') {
+        [...container.querySelectorAll('sl-details')].map(
+          (details) => (details.open = event.target === details)
+        );
+        setTimeout(() => {
+          (event.target as Element)?.scrollIntoView({
+            behavior: 'smooth',
+          });
+        }, 300);
+      }
+    });
+  }
+
+  async connectedCallback() {
+    super.connectedCallback();
+
     this.service = (await getService(this.id))?.data || {};
   }
 
@@ -38,7 +58,7 @@ export class AppService extends LitElement {
         <sl-card>
           <h3>Worship Songs</h3>
 
-          <div class="worship-songs">
+          <div id="worship-songs">
             ${this.service.attributes?.songs?.map(
               (song: any, index: number) => html`
               <sl-details summary="${song.title}" ${index === 0 ? 'open' : ''}>
@@ -52,18 +72,6 @@ export class AppService extends LitElement {
           </div>
         </sl-card>
       </main>
-      <script>
-        const container = document.querySelector('.worship-songs');
-
-        // Close all other details when one is shown
-        container.addEventListener('sl-show', (event) => {
-          if (event.target.localName === 'sl-details') {
-            [...container.querySelectorAll('sl-details')].map(
-              (details) => (details.open = event.target === details)
-            );
-          }
-        });
-      </script>
       <style>
         .worship-songs sl-details:not(:last-of-type) {
           margin-bottom: var(--sl-spacing-2x-small);

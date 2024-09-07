@@ -8,7 +8,7 @@ export const styles = css`
   }
 
   main {
-    margin-top: 60px;
+    margin-top: 40px;
     padding: 12px;
   }
 `;

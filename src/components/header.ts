@@ -14,17 +14,18 @@ export class AppHeader extends LitElement {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: var(--app-color-primary, black);
+      background: var(--app-color-primary, #181818);
       color: white;
-      padding: 12px;
-      padding-top: 4px;
+      padding: 0;
+      border-bottom: 1px solid #f5f5f5;
 
       position: fixed;
       left: env(titlebar-area-x, 0);
       top: env(titlebar-area-y, 0);
-      height: env(titlebar-area-height, 60px);
-      width: env(titlebar-area-width, calc(100% - 36px));
+      height: env(titlebar-area-height, 40px);
+      width: env(titlebar-area-width, 100vw);
       -webkit-app-region: drag;
+      z-index: 999;
     }
 
     header h1 {
@@ -42,12 +43,12 @@ export class AppHeader extends LitElement {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
     }
 
     #logo-block {
-      width: 99px;
-      height: 56px;
+      width: 70px;
+      height: 40px;
       background-image: url('/assets/images/the-mount-logo-dark.png');
       background-size: contain;
       background-repeat: no-repeat;
@@ -56,7 +57,8 @@ export class AppHeader extends LitElement {
     @media (prefers-color-scheme: light) {
       header {
         color: black;
-        background: var(--app-color-primary, white);
+        background: var(--app-color-primary, #f5f5f5);
+        border-bottom: 1px solid #181818;
       }
 
       #logo-block {
