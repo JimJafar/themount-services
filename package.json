@@ -1,7 +1,7 @@
 {
   "name": "themount-services",
   "version": "0.0.1",
-  "description": "A starter kit for building PWAs!",
+  "description": "The Mount St Helens",
   "main": "index.js",
   "scripts": {
     "dev-server": "vite --open",
@@ -40,3 +40,4 @@
     "bracketSpacing": true
   }
 }
+
