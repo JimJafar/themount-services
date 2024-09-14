@@ -27,7 +27,6 @@ export class AppHome extends LitElement {
       }
 
       #welcomeCard {
-        padding: 12px;
         padding-top: 0px;
       }
 

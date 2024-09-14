@@ -50,20 +50,23 @@ export class AppService extends LitElement {
       <app-header ?enableBack="${true}"></app-header>
 
       <main>
-        <sl-card
-          ><h2>
-            Service ${friendlyDate(this.service.attributes?.date)}
-          </h2></sl-card
-        >
         <sl-card>
+          <div slot="header">
+            <h2>Service ${friendlyDate(this.service.attributes?.date)}</h2>
+          </div>
           <h3>Worship Songs</h3>
 
           <div id="worship-songs">
-            ${this.service.attributes?.songs?.map(
+            ${this.service.attributes?.songs?.data?.map(
               (song: any, index: number) => html`
-              <sl-details summary="${song.title}" ${index === 0 ? 'open' : ''}>
-                ${song.lyrics.map(
-                  (block: any) => html`<p>${block.children[0].text}</p>`
+              <sl-details summary="${song.attributes.title}" ${
+                index === 0 ? 'open' : ''
+              }>
+                ${song.attributes.lyrics.map(
+                  (block: any) =>
+                    html`<p class="lyric-line">
+                      ${block.children[0].text || html`<br />`}
+                    </p>`
                 )}
                 <p><i>${song.artist}<i></p>
               </sl-details>
@@ -75,6 +78,9 @@ export class AppService extends LitElement {
       <style>
         .worship-songs sl-details:not(:last-of-type) {
           margin-bottom: var(--sl-spacing-2x-small);
+        }
+        .lyric-line {
+          margin: 0 0 7px 0 !important;
         }
       </style>
     `;
