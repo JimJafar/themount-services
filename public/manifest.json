@@ -4,7 +4,7 @@
   "name": "themount-services",
   "display": "standalone",
   "start_url": "/",
-  "short_name": "starter",
+  "short_name": "The Mount",
   "theme_color": "#E1477E",
   "description": "This is a themount-services app",
   "orientation": "any",
@@ -44,14 +44,8 @@
       "type": "image/png"
     }
   ],
-  "features": [
-    "Cross Platform",
-    "fast",
-    "simple"
-  ],
-  "categories": [
-    "social"
-  ],
+  "features": ["Cross Platform", "fast", "simple"],
+  "categories": ["social"],
   "shortcuts": [
     {
       "name": "Open About",
@@ -84,3 +78,4 @@
     }
   ]
 }
+
