@@ -1,0 +1,13 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "net.codeministry.themount.twa",
+      "sha256_cert_fingerprints": [
+        "3A:D4:02:19:B7:1D:32:8A:69:D0:5F:77:FC:77:78:E2:68:DB:C4:6B:6C:E4:42:6B:FA:B1:5E:AD:E3:AF:E1:BD"
+      ]
+    }
+  }
+]
+
